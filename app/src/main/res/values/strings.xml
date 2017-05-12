@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">P1191_PendingIntent</string>
+    <string name="button_1">Button 1</string>
+    <string name="button_2">Button 2</string>
+    <string name="action_1">action 1</string>
+    <string name="action_2">action 2</string>
+    <string name="extra_1">extra 1</string>
+    <string name="extra_2">extra 2</string>
+    <string name="receiver">Receiver</string>
+    <string name="on_receive">onReceive()</string>
+    <string name="action_"><![CDATA[------> action =]]></string>
+    <string name="extra_"><![CDATA[------> extra =]]></string>
+    <string name="extra">extra</string>
 </resources>
