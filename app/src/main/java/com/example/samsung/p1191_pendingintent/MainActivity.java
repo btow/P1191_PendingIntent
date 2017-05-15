@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
                 intent2 = createIntent(getString(R.string.action_2), getString(R.string.extra_2));
                 pendingIntent1 = PendingIntent.getBroadcast(this, 0, intent2, 0);
 
+                compare(view.getContext());
                 break;
             default:
                 break;
@@ -58,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
         message = "intent 1 == intent 2: " + intent1.filterEquals(intent2);
         Messager.sendToAllRecipients(context, message);
         message = "pendingIntent1 == pendingIntent2: " + pendingIntent1.equals(pendingIntent2);
+        Messager.sendToAllRecipients(context, message);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.HONEYCOMB)
