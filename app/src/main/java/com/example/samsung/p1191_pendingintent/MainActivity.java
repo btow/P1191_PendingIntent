@@ -34,10 +34,18 @@ public class MainActivity extends AppCompatActivity {
         switch (view.getId()) {
 
             case R.id.btn1:
-                intent1 = createIntent(getString(R.string.action_1), getString(R.string.extra_1));
+                //Step 1
+//                intent1 = createIntent(getString(R.string.action_1), getString(R.string.extra_1));
+//                pendingIntent1 = PendingIntent.getBroadcast(this, 0, intent1, 0);
+//
+//                intent2 = createIntent(getString(R.string.action_2), getString(R.string.extra_2));
+//                pendingIntent1 = PendingIntent.getBroadcast(this, 0, intent2, 0);
+
+                //Step 2
+                intent1 = createIntent(getString(R.string.action), getString(R.string.extra_1));
                 pendingIntent1 = PendingIntent.getBroadcast(this, 0, intent1, 0);
 
-                intent2 = createIntent(getString(R.string.action_2), getString(R.string.extra_2));
+                intent2 = createIntent(getString(R.string.action), getString(R.string.extra_2));
                 pendingIntent1 = PendingIntent.getBroadcast(this, 0, intent2, 0);
 
                 compare(view.getContext());
@@ -65,25 +73,26 @@ public class MainActivity extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.HONEYCOMB)
     private void sendNotif(final Context context, final int id, final PendingIntent pendingIntent) {
         //Подготовка уведомления в статус-бар
-        Notification.Builder builder = new Notification.Builder(context);
+        //noinspection deprecation
+        Notification notification = new Notification.Builder(context)
         //Установка флага, удаляющего уведомление из списка после нажатия
-        builder.setAutoCancel(true);
+            .setAutoCancel(true)
         //Установка сообщения для статус-бара
-        builder.setContentText("Notification's text " + id);
+            .setContentText("Notification's text " + id)
         //Установка стикера
-        builder.setTicker("Notification's ticker " + id);
+            .setTicker("Notification's ticker " + id)
         //Установка заголовка
-        builder.setContentTitle("Notification's title " + id);
+            .setContentTitle("Notification's title " + id)
         //Установка малой иконки
-        builder.setSmallIcon(R.mipmap.ic_launcher);
+            .setSmallIcon(R.mipmap.ic_launcher)
         //Подключение активити к записи
-        builder.setContentIntent(pendingIntent);
-        builder.setOngoing(true);
+            .setContentIntent(pendingIntent)
+            .setOngoing(true)
         //Только для API не младше №16
 //        builder.setSubText("The notification's subtext");
         //Создание строки в разворачивающемся списке уведомлений
         //noinspection deprecation
-        Notification notification = builder.getNotification();
+            .getNotification();
         //Отправка уведомления в статус-бар
         nm.notify(1, notification);
     }
