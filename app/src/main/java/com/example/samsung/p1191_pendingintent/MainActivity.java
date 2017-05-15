@@ -60,7 +60,9 @@ public class MainActivity extends AppCompatActivity {
                 intent2 = createIntent(getString(R.string.action), getString(R.string.extra_2));
 //                pendingIntent2 = PendingIntent.getBroadcast(this, 0, intent2, 0);
                 //Step 5
-                pendingIntent2 = PendingIntent.getBroadcast(this, 0, intent2, PendingIntent.FLAG_CANCEL_CURRENT);
+//                pendingIntent2 = PendingIntent.getBroadcast(this, 0, intent2, PendingIntent.FLAG_CANCEL_CURRENT);
+                //Step 6
+                pendingIntent2 = PendingIntent.getBroadcast(this, 0, intent2, PendingIntent.FLAG_UPDATE_CURRENT);
 
                 compare(view.getContext());
                 //Step 3
