@@ -10,15 +10,13 @@ import android.content.Intent;
 
 public class Receiver extends BroadcastReceiver {
 
+    private String message;
+
     @Override
     public void onReceive(Context context, Intent intent) {
-        String message = context.getString(R.string.receiver)
-                + " " + context.getString(R.string.on_receive);
-        Messager.sendToAllRecipients(context, message);
-        message = context.getString(R.string.action_) + " " + intent.getAction();
-        Messager.sendToAllRecipients(context, message);
-        message = context.getString(R.string.extra_) + " "
-                + intent.getStringExtra(context.getString(R.string.extra));
+        message = context.getString(R.string.receiver) + " " + context.getString(R.string.on_receive) + "\n"
+                + context.getString(R.string.action_) + " " + intent.getAction() + "\n"
+                + context.getString(R.string.extra_) + " " + intent.getStringExtra(context.getString(R.string.extra));
         Messager.sendToAllRecipients(context, message);
     }
 }

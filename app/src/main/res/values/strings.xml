@@ -9,7 +9,7 @@
     <string name="extra_2">extra 2</string>
     <string name="receiver">Receiver</string>
     <string name="on_receive">onReceive()</string>
-    <string name="action_"><![CDATA[------> action =]]></string>
-    <string name="extra_"><![CDATA[------> extra =]]></string>
+    <string name="action_"><![CDATA[------> action = ]]></string>
+    <string name="extra_"><![CDATA[------> extra = ]]></string>
     <string name="extra">extra</string>
 </resources>
