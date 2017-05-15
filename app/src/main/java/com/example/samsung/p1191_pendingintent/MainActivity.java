@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
 //
 //                intent2 = createIntent(getString(R.string.action_2), getString(R.string.extra_2));
 //                pendingIntent2 = PendingIntent.getBroadcast(this, 0, intent2, 0);
-                //Step 4, 8.1
+                //Step 4, 8.1, 9.1
                 intent1 = createIntent(getString(R.string.action), getString(R.string.extra_1));
                 pendingIntent1 = PendingIntent.getBroadcast(this, 0, intent1, 0);
                 //Step 8.1
@@ -70,21 +70,24 @@ public class MainActivity extends AppCompatActivity {
 //                pendingIntent2 = PendingIntent.getBroadcast(this, 0, intent2, PendingIntent.FLAG_UPDATE_CURRENT);
 
 //                compare(view.getContext());
-                //Step 3
-//                sendNotif(view.getContext(), 1, pendingIntent1);
+                //Step 3, 9.2
+                sendNotif(view.getContext(), 1, pendingIntent1);
 //                sendNotif(view.getContext(), 2, pendingIntent2);
                 //Step 7.1
 //                sendNotif(view.getContext(), 2, pendingIntent1);
                 break;
             case R.id.btn2 :
                 //Step 8.2
-                intent2 = createIntent(getString(R.string.action), getString(R.string.extra_2));
-                pendingIntent2 = PendingIntent.getBroadcast(this, 0, intent2, PendingIntent.FLAG_NO_CREATE);
-                if (pendingIntent2 == null) {
-                    message = "pendingIntent2 is null";
-                } else {
-                    message = "pendingIntent2 created";
-                }
+//                intent2 = createIntent(getString(R.string.action), getString(R.string.extra_2));
+//                pendingIntent2 = PendingIntent.getBroadcast(this, 0, intent2, PendingIntent.FLAG_NO_CREATE);
+//                if (pendingIntent2 == null) {
+//                    message = "pendingIntent2 is null";
+//                } else {
+//                    message = "pendingIntent2 created";
+//                }
+                //Step 9.3
+                pendingIntent1.cancel();
+                message = "pendingIntent1 is canceled";
                 Messager.sendToAllRecipients(view.getContext(), message);
                 break;
             default:
