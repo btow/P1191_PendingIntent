@@ -41,19 +41,23 @@ public class MainActivity extends AppCompatActivity {
 //
 //                intent2 = createIntent(getString(R.string.action_2), getString(R.string.extra_2));
 //                pendingIntent2 = PendingIntent.getBroadcast(this, 0, intent2, 0);
-
                 //Step 2
 //                intent1 = createIntent(getString(R.string.action), getString(R.string.extra_1));
 //                pendingIntent1 = PendingIntent.getBroadcast(this, 0, intent1, 0);
 //
 //                intent2 = createIntent(getString(R.string.action), getString(R.string.extra_2));
 //                pendingIntent2 = PendingIntent.getBroadcast(this, 0, intent2, 0);
-
                 //Step 3
-                intent1 = createIntent(getString(R.string.action_1), getString(R.string.extra_1));
+//                intent1 = createIntent(getString(R.string.action_1), getString(R.string.extra_1));
+//                pendingIntent1 = PendingIntent.getBroadcast(this, 0, intent1, 0);
+//
+//                intent2 = createIntent(getString(R.string.action_2), getString(R.string.extra_2));
+//                pendingIntent2 = PendingIntent.getBroadcast(this, 0, intent2, 0);
+                //Step 4
+                intent1 = createIntent(getString(R.string.action), getString(R.string.extra_1));
                 pendingIntent1 = PendingIntent.getBroadcast(this, 0, intent1, 0);
 
-                intent2 = createIntent(getString(R.string.action_2), getString(R.string.extra_2));
+                intent2 = createIntent(getString(R.string.action), getString(R.string.extra_2));
                 pendingIntent2 = PendingIntent.getBroadcast(this, 0, intent2, 0);
 
                 compare(view.getContext());
