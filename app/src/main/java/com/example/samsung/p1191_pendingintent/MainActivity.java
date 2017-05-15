@@ -2,19 +2,20 @@ package com.example.samsung.p1191_pendingintent;
 
 import android.app.AlarmManager;
 import android.app.Notification;
-import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.NotificationManagerCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
 
-    private NotificationManager nm;
+    public NotificationManagerCompat nm;
     private AlarmManager am;
     private Intent intent1, intent2;
     private PendingIntent pendingIntent1, pendingIntent2;
@@ -25,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        nm = NotificationManagerCompat.from(getBaseContext());
         am = (AlarmManager) getSystemService(ALARM_SERVICE);
     }
 
@@ -80,17 +81,17 @@ public class MainActivity extends AppCompatActivity {
         Messager.sendToAllRecipients(context, message);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.HONEYCOMB)
     private void sendNotif(final Context context, final int id, final PendingIntent pendingIntent) {
         //Подготовка уведомления в статус-бар
-        //noinspection deprecation
-        Notification notification = new Notification.Builder(context)
+        Notification notification = new NotificationCompat.Builder(context)
                 //Установка заголовка
                 .setContentTitle("Notification's title " + id)
                 //Установка сообщения для статус-бара
                 .setContentText("Notification's text " + id)
                 //Установка стикера
                 .setTicker("Notification's ticker " + id)
+                //Установка времени сообщения
+                .setWhen(System.currentTimeMillis())
                 //Установка малой иконки
                 .setSmallIcon(R.mipmap.ic_launcher_round)
                 //Подключение активити к записи
@@ -101,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
 //              .setSubText("The notification's subtext");
                 //Создание строки в разворачивающемся списке уведомлений
                 //noinspection deprecation
-                .getNotification();
+                .build();
         //Отправка уведомления в статус-бар
         nm.notify(id, notification);
     }

@@ -14,7 +14,8 @@ public class Receiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        message = context.getString(R.string.receiver) + " " + context.getString(R.string.on_receive) + "\n"
+        message = "-------------------------------------\n"
+                + context.getString(R.string.receiver) + " " + context.getString(R.string.on_receive) + "\n"
                 + context.getString(R.string.action_) + " " + intent.getAction() + "\n"
                 + context.getString(R.string.extra_) + " " + intent.getStringExtra(context.getString(R.string.extra));
         Messager.sendToAllRecipients(context, message);
