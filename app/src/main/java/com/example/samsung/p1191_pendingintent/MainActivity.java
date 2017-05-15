@@ -54,10 +54,18 @@ public class MainActivity extends AppCompatActivity {
 //                intent2 = createIntent(getString(R.string.action_2), getString(R.string.extra_2));
 //                pendingIntent2 = PendingIntent.getBroadcast(this, 0, intent2, 0);
                 //Step 4, 8.1, 9.1
-                intent1 = createIntent(getString(R.string.action), getString(R.string.extra_1));
-                pendingIntent1 = PendingIntent.getBroadcast(this, 0, intent1, 0);
+//                intent1 = createIntent(getString(R.string.action), getString(R.string.extra_1));
+//                pendingIntent1 = PendingIntent.getBroadcast(this, 0, intent1, 0);
                 //Step 8.1
-                message = "pendingIntent1 created";
+//                message = "pendingIntent1 created";
+                //Step 10
+                intent1 = createIntent(getString(R.string.action), getString(R.string.extra_1));
+                pendingIntent1 = PendingIntent.getBroadcast(this, 1, intent1, 0);
+
+                intent2 = createIntent(getString(R.string.action), getString(R.string.extra_2));
+                pendingIntent2 = PendingIntent.getBroadcast(this, 2, intent2, 0);
+
+                message = "pendingIntent1 and pendingIntent2 created";
                 Messager.sendToAllRecipients(view.getContext(), message);
                 //Step 7.2
 //                pendingIntent1 = PendingIntent.getBroadcast(this, 0, intent1, PendingIntent.FLAG_ONE_SHOT);
@@ -69,10 +77,11 @@ public class MainActivity extends AppCompatActivity {
                 //Step 6
 //                pendingIntent2 = PendingIntent.getBroadcast(this, 0, intent2, PendingIntent.FLAG_UPDATE_CURRENT);
 
-//                compare(view.getContext());
-                //Step 3, 9.2
+                compare(view.getContext());
+                //Step 3, 9.2, 10
                 sendNotif(view.getContext(), 1, pendingIntent1);
-//                sendNotif(view.getContext(), 2, pendingIntent2);
+                //Step 3, 10
+                sendNotif(view.getContext(), 2, pendingIntent2);
                 //Step 7.1
 //                sendNotif(view.getContext(), 2, pendingIntent1);
                 break;
