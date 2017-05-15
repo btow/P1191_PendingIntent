@@ -55,19 +55,23 @@ public class MainActivity extends AppCompatActivity {
 //                pendingIntent2 = PendingIntent.getBroadcast(this, 0, intent2, 0);
                 //Step 4
                 intent1 = createIntent(getString(R.string.action), getString(R.string.extra_1));
-                pendingIntent1 = PendingIntent.getBroadcast(this, 0, intent1, 0);
+//                pendingIntent1 = PendingIntent.getBroadcast(this, 0, intent1, 0);
+                //Step 7.2
+                pendingIntent1 = PendingIntent.getBroadcast(this, 0, intent1, PendingIntent.FLAG_ONE_SHOT);
 
-                intent2 = createIntent(getString(R.string.action), getString(R.string.extra_2));
+//                intent2 = createIntent(getString(R.string.action), getString(R.string.extra_2));
 //                pendingIntent2 = PendingIntent.getBroadcast(this, 0, intent2, 0);
                 //Step 5
 //                pendingIntent2 = PendingIntent.getBroadcast(this, 0, intent2, PendingIntent.FLAG_CANCEL_CURRENT);
                 //Step 6
-                pendingIntent2 = PendingIntent.getBroadcast(this, 0, intent2, PendingIntent.FLAG_UPDATE_CURRENT);
+//                pendingIntent2 = PendingIntent.getBroadcast(this, 0, intent2, PendingIntent.FLAG_UPDATE_CURRENT);
 
                 compare(view.getContext());
                 //Step 3
                 sendNotif(view.getContext(), 1, pendingIntent1);
-                sendNotif(view.getContext(), 2, pendingIntent2);
+//                sendNotif(view.getContext(), 2, pendingIntent2);
+                //Step 7.1
+                sendNotif(view.getContext(), 2, pendingIntent1);
                 break;
             default:
                 break;
