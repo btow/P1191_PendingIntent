@@ -39,16 +39,19 @@ public class MainActivity extends AppCompatActivity {
 //                pendingIntent1 = PendingIntent.getBroadcast(this, 0, intent1, 0);
 //
 //                intent2 = createIntent(getString(R.string.action_2), getString(R.string.extra_2));
-//                pendingIntent1 = PendingIntent.getBroadcast(this, 0, intent2, 0);
+//                pendingIntent2 = PendingIntent.getBroadcast(this, 0, intent2, 0);
 
                 //Step 2
                 intent1 = createIntent(getString(R.string.action), getString(R.string.extra_1));
                 pendingIntent1 = PendingIntent.getBroadcast(this, 0, intent1, 0);
 
                 intent2 = createIntent(getString(R.string.action), getString(R.string.extra_2));
-                pendingIntent1 = PendingIntent.getBroadcast(this, 0, intent2, 0);
+                pendingIntent2 = PendingIntent.getBroadcast(this, 0, intent2, 0);
 
                 compare(view.getContext());
+                //Step 2.5
+                sendNotif(view.getContext(), 1, pendingIntent1);
+                sendNotif(view.getContext(), 2, pendingIntent2);
                 break;
             default:
                 break;
@@ -84,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
         //Установка заголовка
             .setContentTitle("Notification's title " + id)
         //Установка малой иконки
-            .setSmallIcon(R.mipmap.ic_launcher)
+            .setSmallIcon(R.mipmap.ic_launcher_round)
         //Подключение активити к записи
             .setContentIntent(pendingIntent)
             .setOngoing(true)
@@ -93,6 +96,7 @@ public class MainActivity extends AppCompatActivity {
         //Создание строки в разворачивающемся списке уведомлений
         //noinspection deprecation
             .getNotification();
+        notification.flags |= Notification.FLAG_AUTO_CANCEL;
         //Отправка уведомления в статус-бар
         nm.notify(1, notification);
     }

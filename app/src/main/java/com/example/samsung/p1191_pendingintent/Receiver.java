@@ -15,9 +15,9 @@ public class Receiver extends BroadcastReceiver {
         String message = context.getString(R.string.receiver)
                 + " " + context.getString(R.string.on_receive);
         Messager.sendToAllRecipients(context, message);
-        message = context.getString(R.string.action_) + intent.getAction();
+        message = context.getString(R.string.action_) + " " + intent.getAction();
         Messager.sendToAllRecipients(context, message);
-        message = context.getString(R.string.extra_)
+        message = context.getString(R.string.extra_) + " "
                 + intent.getStringExtra(context.getString(R.string.extra));
         Messager.sendToAllRecipients(context, message);
     }
