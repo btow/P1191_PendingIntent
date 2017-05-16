@@ -37,18 +37,18 @@ public class MainActivity extends AppCompatActivity {
         switch (view.getId()) {
 
             case R.id.btn1:
-                //PendingIntent Step 1 and AlarmManager Step 11
-                intent1 = createIntent(getString(R.string.action_1), getString(R.string.extra_1));
-                pendingIntent1 = PendingIntent.getBroadcast(this, 0, intent1, 0);
-
-                intent2 = createIntent(getString(R.string.action_2), getString(R.string.extra_2));
-                pendingIntent2 = PendingIntent.getBroadcast(this, 0, intent2, 0);
-                //PendingIntent Step 2
-//                intent1 = createIntent(getString(R.string.action), getString(R.string.extra_1));
+                //PendingIntent Step 1 and AlarmManager Step 11.1
+//                intent1 = createIntent(getString(R.string.action_1), getString(R.string.extra_1));
 //                pendingIntent1 = PendingIntent.getBroadcast(this, 0, intent1, 0);
 //
-//                intent2 = createIntent(getString(R.string.action), getString(R.string.extra_2));
+//                intent2 = createIntent(getString(R.string.action_2), getString(R.string.extra_2));
 //                pendingIntent2 = PendingIntent.getBroadcast(this, 0, intent2, 0);
+                //PendingIntent Step 2 and AlarmManager Step 11.2
+                intent1 = createIntent(getString(R.string.action), getString(R.string.extra_1));
+                pendingIntent1 = PendingIntent.getBroadcast(this, 0, intent1, 0);
+
+                intent2 = createIntent(getString(R.string.action), getString(R.string.extra_2));
+                pendingIntent2 = PendingIntent.getBroadcast(this, 0, intent2, 0);
                 //PendingIntent Step 3
 //                intent1 = createIntent(getString(R.string.action_1), getString(R.string.extra_1));
 //                pendingIntent1 = PendingIntent.getBroadcast(this, 0, intent1, 0);
@@ -82,10 +82,14 @@ public class MainActivity extends AppCompatActivity {
                 //AlarmManager Step 11
                 message = "AlarmManager started";
                 Messager.sendToAllRecipients(view.getContext(), message);
-                am.set(AlarmManager.RTC, System.currentTimeMillis() + 4000, pendingIntent1);
-                am.setRepeating(AlarmManager.ELAPSED_REALTIME,
-                        SystemClock.elapsedRealtime() + 3000,
-                        5000, pendingIntent2);
+                // AlarmManager Step 11.1
+//                am.set(AlarmManager.RTC, System.currentTimeMillis() + 4000, pendingIntent1);
+//                am.setRepeating(AlarmManager.ELAPSED_REALTIME,
+//                        SystemClock.elapsedRealtime() + 3000,
+//                        5000, pendingIntent2);
+                // AlarmManager Step 11.2
+                am.set(AlarmManager.RTC, System.currentTimeMillis() + 2000, pendingIntent1);
+                am.set(AlarmManager.RTC, System.currentTimeMillis() + 4000, pendingIntent2);
                 //PendingIntent Step 7.2
 //                pendingIntent1 = PendingIntent.getBroadcast(this, 0, intent1, PendingIntent.FLAG_ONE_SHOT);
 
