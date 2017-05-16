@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
@@ -36,68 +37,75 @@ public class MainActivity extends AppCompatActivity {
         switch (view.getId()) {
 
             case R.id.btn1:
-                //Step 1
-//                intent1 = createIntent(getString(R.string.action_1), getString(R.string.extra_1));
-//                pendingIntent1 = PendingIntent.getBroadcast(this, 0, intent1, 0);
-//
-//                intent2 = createIntent(getString(R.string.action_2), getString(R.string.extra_2));
-//                pendingIntent2 = PendingIntent.getBroadcast(this, 0, intent2, 0);
-                //Step 2
+                //PendingIntent Step 1 and AlarmManager Step 11
+                intent1 = createIntent(getString(R.string.action_1), getString(R.string.extra_1));
+                pendingIntent1 = PendingIntent.getBroadcast(this, 0, intent1, 0);
+
+                intent2 = createIntent(getString(R.string.action_2), getString(R.string.extra_2));
+                pendingIntent2 = PendingIntent.getBroadcast(this, 0, intent2, 0);
+                //PendingIntent Step 2
 //                intent1 = createIntent(getString(R.string.action), getString(R.string.extra_1));
 //                pendingIntent1 = PendingIntent.getBroadcast(this, 0, intent1, 0);
 //
 //                intent2 = createIntent(getString(R.string.action), getString(R.string.extra_2));
 //                pendingIntent2 = PendingIntent.getBroadcast(this, 0, intent2, 0);
-                //Step 3
+                //PendingIntent Step 3
 //                intent1 = createIntent(getString(R.string.action_1), getString(R.string.extra_1));
 //                pendingIntent1 = PendingIntent.getBroadcast(this, 0, intent1, 0);
 //
 //                intent2 = createIntent(getString(R.string.action_2), getString(R.string.extra_2));
 //                pendingIntent2 = PendingIntent.getBroadcast(this, 0, intent2, 0);
-                //Step 4, 8.1, 9.1
+                //PendingIntent Step 4, 8.1, 9.1
 //                intent1 = createIntent(getString(R.string.action), getString(R.string.extra_1));
 //                pendingIntent1 = PendingIntent.getBroadcast(this, 0, intent1, 0);
-                //Step 8.1
+                //PendingIntent Step 8.1
 //                message = "pendingIntent1 created";
-                //Step 10.1
+                //PendingIntent Step 10.1
 //                intent1 = createIntent(getString(R.string.action), getString(R.string.extra_1));
 //                pendingIntent1 = PendingIntent.getBroadcast(this, 1, intent1, 0);
 //
 //                intent2 = createIntent(getString(R.string.action), getString(R.string.extra_2));
 //                pendingIntent2 = PendingIntent.getBroadcast(this, 2, intent2, 0);
-                //Step 10.2
-                intent1 = createIntent(getString(R.string.action), getString(R.string.extra_1));
-                Uri data1 = Uri.parse(intent1.toUri(Intent.URI_INTENT_SCHEME));
-                intent1.setData(data1);
-                pendingIntent1 = PendingIntent.getBroadcast(this, 0, intent1, 0);
-
-                intent2 = createIntent(getString(R.string.action), getString(R.string.extra_2));
-                Uri data2 = Uri.parse(intent2.toUri(Intent.URI_INTENT_SCHEME));
-                intent2.setData(data2);
-                pendingIntent2 = PendingIntent.getBroadcast(this, 0, intent2, 0);
-                //Step 8 - 10
+                //PendingIntent Step 10.2
+//                intent1 = createIntent(getString(R.string.action), getString(R.string.extra_1));
+//                Uri data1 = Uri.parse(intent1.toUri(Intent.URI_INTENT_SCHEME));
+//                intent1.setData(data1);
+//                pendingIntent1 = PendingIntent.getBroadcast(this, 0, intent1, 0);
+//
+//                intent2 = createIntent(getString(R.string.action), getString(R.string.extra_2));
+//                Uri data2 = Uri.parse(intent2.toUri(Intent.URI_INTENT_SCHEME));
+//                intent2.setData(data2);
+//                pendingIntent2 = PendingIntent.getBroadcast(this, 0, intent2, 0);
+                //PendingIntent Step 8 - 10 and AlarmManager Step 11
                 message = "pendingIntent1 and pendingIntent2 created";
                 Messager.sendToAllRecipients(view.getContext(), message);
-                //Step 7.2
+                //AlarmManager Step 11
+                message = "AlarmManager started";
+                Messager.sendToAllRecipients(view.getContext(), message);
+                am.set(AlarmManager.RTC, System.currentTimeMillis() + 4000, pendingIntent1);
+                am.setRepeating(AlarmManager.ELAPSED_REALTIME,
+                        SystemClock.elapsedRealtime() + 3000,
+                        5000, pendingIntent2);
+                //PendingIntent Step 7.2
 //                pendingIntent1 = PendingIntent.getBroadcast(this, 0, intent1, PendingIntent.FLAG_ONE_SHOT);
 
 //                intent2 = createIntent(getString(R.string.action), getString(R.string.extra_2));
 //                pendingIntent2 = PendingIntent.getBroadcast(this, 0, intent2, 0);
-                //Step 5
+                //PendingIntent Step 5
 //                pendingIntent2 = PendingIntent.getBroadcast(this, 0, intent2, PendingIntent.FLAG_CANCEL_CURRENT);
-                //Step 6
+                //PendingIntent Step 6
 //                pendingIntent2 = PendingIntent.getBroadcast(this, 0, intent2, PendingIntent.FLAG_UPDATE_CURRENT);
 
-                compare(view.getContext());
-                //Step 3, 9.2, 10
-                sendNotif(view.getContext(), 1, pendingIntent1);
-                //Step 3, 10
-                sendNotif(view.getContext(), 2, pendingIntent2);
-                //Step 7.1
+//                compare(view.getContext());
+                //PendingIntent Step 3, 9.2, 10
+//                sendNotif(view.getContext(), 1, pendingIntent1);
+                //PendingIntent Step 3, 10
+//                sendNotif(view.getContext(), 2, pendingIntent2);
+                //PendingIntent Step 7.1
 //                sendNotif(view.getContext(), 2, pendingIntent1);
                 break;
             case R.id.btn2 :
-                //Step 8.2
+                //PendingIntent Step 8.2
 //                intent2 = createIntent(getString(R.string.action), getString(R.string.extra_2));
 //                pendingIntent2 = PendingIntent.getBroadcast(this, 0, intent2, PendingIntent.FLAG_NO_CREATE);
 //                if (pendingIntent2 == null) {
@@ -105,9 +113,13 @@ public class MainActivity extends AppCompatActivity {
 //                } else {
 //                    message = "pendingIntent2 created";
 //                }
-                //Step 9.3
-                pendingIntent1.cancel();
-                message = "pendingIntent1 is canceled";
+                //PendingIntent Step 9.3 - 10
+//                pendingIntent1.cancel();
+//                message = "pendingIntent1 is canceled";
+//                AlarmManager Step 11
+                am.cancel(pendingIntent2);
+                message = "AlarmManager of pendingIntent2 is canceled";
+                //PendingIntent Step 9.3 - 10 and AlarmManager Step 11
                 Messager.sendToAllRecipients(view.getContext(), message);
                 break;
             default:
