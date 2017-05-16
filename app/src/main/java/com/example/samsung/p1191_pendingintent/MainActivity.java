@@ -5,6 +5,7 @@ import android.app.Notification;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
@@ -58,13 +59,23 @@ public class MainActivity extends AppCompatActivity {
 //                pendingIntent1 = PendingIntent.getBroadcast(this, 0, intent1, 0);
                 //Step 8.1
 //                message = "pendingIntent1 created";
-                //Step 10
+                //Step 10.1
+//                intent1 = createIntent(getString(R.string.action), getString(R.string.extra_1));
+//                pendingIntent1 = PendingIntent.getBroadcast(this, 1, intent1, 0);
+//
+//                intent2 = createIntent(getString(R.string.action), getString(R.string.extra_2));
+//                pendingIntent2 = PendingIntent.getBroadcast(this, 2, intent2, 0);
+                //Step 10.2
                 intent1 = createIntent(getString(R.string.action), getString(R.string.extra_1));
-                pendingIntent1 = PendingIntent.getBroadcast(this, 1, intent1, 0);
+                Uri data1 = Uri.parse(intent1.toUri(Intent.URI_INTENT_SCHEME));
+                intent1.setData(data1);
+                pendingIntent1 = PendingIntent.getBroadcast(this, 0, intent1, 0);
 
                 intent2 = createIntent(getString(R.string.action), getString(R.string.extra_2));
-                pendingIntent2 = PendingIntent.getBroadcast(this, 2, intent2, 0);
-
+                Uri data2 = Uri.parse(intent2.toUri(Intent.URI_INTENT_SCHEME));
+                intent2.setData(data2);
+                pendingIntent2 = PendingIntent.getBroadcast(this, 0, intent2, 0);
+                //Step 8 - 10
                 message = "pendingIntent1 and pendingIntent2 created";
                 Messager.sendToAllRecipients(view.getContext(), message);
                 //Step 7.2
